@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <link href="https://s3.amazonaws.com/codiqa-cdn/codiqa.ext.css" rel="stylesheet">
+  <link href="https://s3.amazonaws.com/codiqa-cdn/mobile/1.4.2/jquery.mobile-1.4.2.css" rel="stylesheet">
+
+  <link rel="stylesheet" type="text/css" href="style.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+  <script src="https://s3.amazonaws.com/codiqa-cdn/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
+  <script src="https://s3.amazonaws.com/codiqa-cdn/codiqa.ext.js"></script>
+
+  <script src="script.js"></script>
+<script type="text/javascript" charset="utf-8">
+        
+        
+    // Wait for device API libraries to load
+    //
+    document.addEventListener("deviceready", onDeviceReady, false);
+
+    // device APIs are available
+    //
+    function onDeviceReady() {
+        navigator.splashscreen.show();
+    }
+       </script> 
+	   <script type="text/javascript" charset="utf-8" src="cordova-2.2.0.js"></script>
+    <script type="text/javascript" charset="utf-8">
+
+    // Wait for Cordova to load
+    //
+    document.addEventListener("deviceready", onDeviceReady, false);
+
+    // Cordova is ready
+    //
+    function onDeviceReady() {
+        // Empty
+    }
+
+    // alert dialog dismissed
+    function alertDismissed() {
+        // do something
+    }
+
+    // Show a custom alertDismissed
+    //
+	 function onConfirm(buttonIndex) {
+        alert('You selected button ' + buttonIndex);
+    }
+
+    // Show a custom confirmation dialog
+    //
+    function showConfirm() {
+        navigator.notification.confirm(
+            'You are the winner!',  // message
+            onConfirm,              // callback to invoke with index of button pressed
+            'Game Over',            // title
+            'Restart,Exit'          // buttonLabels
+        );
+    function showAlert() {
+        navigator.notification.alert(
+            'You are the winner2!',  // message
+            alertDismissed,         // callback
+            'Game Over2',            // title
+            'Done2'                  // buttonName
+        );
+    }
+
+    </script>
+</head>
+<body>
+<div data-role="page" data-control-title="Login" id="page5">
+    <div data-theme="b" data-role="header">
+        <h1 class="ui-title">
+            App
+        </h1>
+    </div>
+    <div role="main" class="ui-content">
+        <div class="ui-field-contain" data-controltype="textinput">
+            <input name="" id="textinput6" placeholder="Usuario" value="" type="text">
+        </div>
+        <div class="ui-field-contain" data-controltype="textinput">
+            <input name="" id="textinput7" placeholder=" Contraseña" value="" type="password">
+        </div>
+        <a data-transition="none" href="#page7" data-icon="star" data-iconpos="left"
+        class="ui-btn ui-btn-b ui-icon-star ui-btn-icon-left">
+            Login
+        </a>
+    </div>
+</div>
+<div data-role="page" data-control-title="imc" id="page7">
+    <div data-theme="b" data-role="header">
+        <h1 class="ui-title">
+            App
+        </h1>
+        <a data-rel="back" data-transition="none" href="#page7" data-icon="back"
+        data-iconpos="left" class="ui-btn ui-btn-left ui-icon-back ui-btn-icon-left">
+        </a>
+    </div>
+    <div role="main" class="ui-content">
+        <div class="ui-field-contain" data-controltype="textinput">
+            <input name="" id="textinput9" placeholder="¿Cual es tu nombre?" value=""
+            type="text" data-mini="true">
+        </div>
+        <div class="ui-field-contain" data-controltype="textinput">
+            <input name="" id="textinput11" placeholder="¿Cual es tu Peso en kg?"
+            value="" type="text" data-mini="true">
+        </div>
+        <div class="ui-field-contain" data-controltype="textinput">
+            <input name="" id="textinput12" placeholder="¿Cual es tu estatura en cm?"
+            value="" type="text" data-mini="true">
+        </div>
+        <a href="#page3" onclick="showConfirm(); return false;" data-icon="forward" data-iconpos="right" class="ui-btn ui-btn-b ui-icon-forward ui-btn-icon-right">
+            Iniciar
+        </a>
+    </div>
+</div>
+<div data-role="page" data-control-title="menu" id="page3">
+    <div data-theme="b" data-role="header">
+        <h1 class="ui-title">
+            App
+        </h1>
+        <a data-rel="back" data-transition="none" href="#page3" data-icon="back"
+        data-iconpos="left" class="ui-btn ui-btn-left ui-icon-back ui-btn-icon-left">
+        </a>
+    </div>
+    <div role="main" class="ui-content">
+        <a data-transition="none" onclick="showAlert(); return false;" href="#page4" data-icon="forward" data-iconpos="right"
+        class="ui-btn  ui-icon-forward ui-btn-icon-right">
+            Caminar
+        </a>
+        <hr style="height:3px; background-color:#ccc; border:0; margin-top:12px; margin-bottom:12px;">
+        <a href="#page6" data-icon="forward" data-iconpos="right" class="ui-btn  ui-icon-forward ui-btn-icon-right">
+            Ver Graficas
+        </a>
+    </div>
+</div>
+<div data-role="page" data-control-title="posicion" id="page4">
+    <div data-theme="b" data-role="header">
+        <h1 class="ui-title">
+            App
+        </h1>
+        <a data-rel="back" data-transition="none" href="#page4" data-icon="back"
+        data-iconpos="left" class="ui-btn ui-btn-left ui-icon-back ui-btn-icon-left">
+        </a>
+    </div>
+    <div role="main" class="ui-content">
+        <div data-controltype="textblock">
+            <p style="text-align: center;">
+                <b>
+                    Tu estas aqui
+                </b>
+            </p>
+        </div>
+        <div id="googlemapsjs2" class="google-map" style="width: 288px; height: 200px; margin-left: auto; margin-right: auto">
+        </div>
+        <script type="text/javascript">
+                window.CodiqaControls && window.CodiqaControls.register('googlemaps', 'googlemapsjs2', {
+            ready: function(control) {
+
+                control.options = {
+                    zoom: 14,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                };
+
+                control.el = document.getElementById(control._id);
+                control.map = new google.maps.Map(control.el, control.options);
+
+                var geocoder = new google.maps.Geocoder();
+                geocoder.geocode({
+                    'address': 'Madison, WI'
+                }, function(results, status) {
+                    if (status == google.maps.GeocoderStatus.OK) {
+
+                        var marker = new google.maps.Marker({
+                            map: control.map,
+                            position: results[0].geometry.location
+                        });
+                        control.center = results[0].geometry.location;
+                        control.map.setCenter(control.center);
+                    }
+                });
+
+            }
+        });
+        </script>
+    </div>
+</div>
+<div data-role="page" data-control-title="graficas" id="page6">
+    <div data-theme="b" data-role="header">
+        <h1 class="ui-title">
+            App
+        </h1>
+        <a data-rel="back" data-transition="none" href="#page6" data-icon="back"
+        data-iconpos="left" class="ui-btn ui-btn-left ui-icon-back ui-btn-icon-left">
+        </a>
+    </div>
+    <div role="main" class="ui-content">
+    </div>
+</div>
+</body>
+</html>

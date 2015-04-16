@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<widget xmlns = "http://www.w3.org/ns/widgets"
+        xmlns:gap = "http://phonegap.com/ns/1.0"
+        id        = "com.phonegap.test.ucc"
+        version   = "1.0.0">
+        <name>AppCalorias</name>
+<plugins>
+<plugin name="Notification" value="org.apache.cordova.notification.Notification" />	
+</plugins>
+<icon src="icon.png" gap:platform="android" width="80" height="80"/>
+        <description>
+           Practica en el manejo de varias Api's con Phonegap.
+        </description>
+        <author email="smadelarosa@gmail.com" href="http://www.ucc.edu.co">
+Jorge Gaairia
+        </author>
+        <content src="index.html" />
+        <access origin="*" />
+        <preference name="phonegap-version" value="3.3.0"/>    
+        <feature name="File">
+            <param name="android-package" value="org.apache.cordova.file.FileUtils" />
+        </feature>
+        <feature name="SplashScreen">
+            <param name="android-package" value="org.apache.cordova.splashscreen.SplashScreen" />
+        </feature>
+        <gap:plugin name="org.apache.cordova.device" /> 
+        <gap:plugin name="org.apache.cordova.device-motion" />
+        <gap:plugin name="org.apache.cordova.media-capture" />
+        <gap:plugin name="org.apache.cordova.media" />
+        <gap:splash src="splash.png" />
+
+</widget>
