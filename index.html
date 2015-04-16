@@ -15,93 +15,42 @@
   <script src="https://s3.amazonaws.com/codiqa-cdn/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
   <script src="https://s3.amazonaws.com/codiqa-cdn/codiqa.ext.js"></script>
 
-  <script src="script.js"></script>
-<script type="text/javascript" charset="utf-8">
-        
-        
-    // Wait for device API libraries to load
-    //
-    document.addEventListener("deviceready", onDeviceReady, false);
-
-    // device APIs are available
-    //
-    function onDeviceReady() {
-        navigator.splashscreen.show();
-    }
-       </script> 
-	   <script type="text/javascript" charset="utf-8" src="cordova-2.2.0.js"></script>
-    <script type="text/javascript" charset="utf-8">
-
-    // Wait for Cordova to load
-    //
-    document.addEventListener("deviceready", onDeviceReady, false);
-
-    // Cordova is ready
-    //
-    function onDeviceReady() {
-        // Empty
-    }
-
-    // alert dialog dismissed
-    function alertDismissed() {
-        // do something
-    }
-
-    // Show a custom alertDismissed
-    //
-	 function onConfirm(buttonIndex) {
-        alert('You selected button ' + buttonIndex);
-    }
-
-    // Show a custom confirmation dialog
-    //
-    function showConfirm() {
-        navigator.notification.confirm(
-            'You are the winner!',  // message
-            onConfirm,              // callback to invoke with index of button pressed
-            'Game Over',            // title
-            'Restart,Exit'          // buttonLabels
-        );
-    function showAlert() {
-        navigator.notification.alert(
-            'You are the winner2!',  // message
-            alertDismissed,         // callback
-            'Game Over2',            // title
-            'Done2'                  // buttonName
-        );
-    }
-
-    </script>
+<script type="text/javascript" charset="utf-8" src="phonegap-1.0.0.js">
+</script>
+ <script type="text/javascript" charset="utf-8">
+ // Espere a que PhoneGap inicie // 
+ document.addEventListener("deviceready", onDeviceReady, false);
+ // PhoneGap esta listo //
+ function onDeviceReady() {
+ // vacio 
+ } 
+ // alerta cerrada
+ function alertDismissed() {
+ // hacer algo aquí 
+ } 
+ // Muestra un cuadro de dialogo personalizado 
+ //
+ function showAlert(){ 
+ navigator.notification.alert(
+ 'Eres el ganador!',  // mensaje (message)
+ alertDismissed, // función 'callback' (alertCallback)
+ 'Game Over', // titulo (title) 
+ 'Cerrar' // nombre del botón (buttonName) 
+ ); 
+ } 
+</script> 
+ 
 </head>
 <body>
-<div data-role="page" data-control-title="Login" id="page5">
-    <div data-theme="b" data-role="header">
-        <h1 class="ui-title">
-            App
-        </h1>
-    </div>
-    <div role="main" class="ui-content">
-        <div class="ui-field-contain" data-controltype="textinput">
-            <input name="" id="textinput6" placeholder="Usuario" value="" type="text">
-        </div>
-        <div class="ui-field-contain" data-controltype="textinput">
-            <input name="" id="textinput7" placeholder=" Contraseña" value="" type="password">
-        </div>
-        <a data-transition="none" href="#page7" data-icon="star" data-iconpos="left"
-        class="ui-btn ui-btn-b ui-icon-star ui-btn-icon-left">
-            Login
-        </a>
-    </div>
-</div>
 <div data-role="page" data-control-title="imc" id="page7">
+<a href="#" onclick="showAlert(); return false;">Mostrar cuadro de dialogo</a>
     <div data-theme="b" data-role="header">
         <h1 class="ui-title">
             App
         </h1>
-        <a data-rel="back" data-transition="none" href="#page7" data-icon="back"
-        data-iconpos="left" class="ui-btn ui-btn-left ui-icon-back ui-btn-icon-left">
-        </a>
+        
     </div>
+	
     <div role="main" class="ui-content">
         <div class="ui-field-contain" data-controltype="textinput">
             <input name="" id="textinput9" placeholder="¿Cual es tu nombre?" value=""

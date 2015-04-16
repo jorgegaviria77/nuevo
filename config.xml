@@ -4,10 +4,6 @@
         id        = "com.phonegap.test.ucc"
         version   = "1.0.0">
         <name>AppCalorias</name>
-<plugins>
-<plugin name="Notification" value="org.apache.cordova.dialogs" />	
-<plugin name="Notification" value="org.apache.cordova.notification.Notification" />	
-</plugins>
 <icon src="icon.png" gap:platform="android" width="80" height="80"/>
         <description>
            Practica en el manejo de varias Api's con Phonegap.
@@ -29,5 +25,5 @@ Jorge Gaairia
         <gap:plugin name="org.apache.cordova.media-capture" />
         <gap:plugin name="org.apache.cordova.media" />
         <gap:splash src="splash.png" />
-	<gap:plugin name="org.apache.cordova.dialogs" version="0.2.10" />
+	<gap:plugin name="org.apache.cordova.dialogs" />
 </widget>
