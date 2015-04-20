@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  <title>
+    Google Visualization API Sample
+  </title>
+  <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+  <script type="text/javascript">
+    google.load('visualization', '1.0', {packages: ['charteditor']});
+  </script>
+  <script type="text/javascript">
+    google.setOnLoadCallback(loadEditor);
+    var chartEditor = null;
+
+    function loadEditor() {
+      // Create the chart to edit.
+    calorias = localStorage.getItem('calq');
+      var wrapper = new google.visualization.ChartWrapper({
+       chartType: 'ColumnChart',
+    dataTable: [['Hoy'],
+                [10]],
+    options: {'title': 'Calorias Quemadas:'},
+    containerId: 'visualization'
+      });
+
+      chartEditor = new google.visualization.ChartEditor();
+      google.visualization.events.addListener(chartEditor, 'ok', redrawChart);
+      chartEditor.openDialog(wrapper, {});
+    }
+
+    // On "OK" save the chart to a <div> on the page.
+    function redrawChart(){
+      chartEditor.getChartWrapper().draw(document.getElementById('vis_div'));
+    }
+
+  </script>
+</head>
+<body>
+  <div id="vis_div" style="height: 400px; width: 600px;"></div>
+</body>
+</html>

@@ -11,6 +11,7 @@
         <author email="smadelarosa@gmail.com" href="http://www.ucc.edu.co">
 Jorge Gaairia
         </author>
+<plugin name="Notification" value="org.apache.cordova.Notification"/>
         <content src="index.html" />
         <access origin="*" />
         <preference name="phonegap-version" value="3.3.0"/>    

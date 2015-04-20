@@ -8,7 +8,7 @@ function guardarReg(){
 	
 	var pes = document.registro.peso.value;
 	localStorage.setItem('keypes',pes);
-	if (nom == "juanito" ){
+	if (nom == "" ){
 	
 	 navigator.notification.alert(
       "Tu estatura es:  " + est,  

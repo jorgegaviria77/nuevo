@@ -1,67 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-
-	  <meta charset="utf-8">
+<meta charset="utf-8">
 	  <title></title>
-	
-	
-	
+	  <meta name="viewport" content="width=device-width, initial-scale=1">
+	  <meta name="apple-mobile-web-app-capable" content="yes">
+	  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+	  <link href="https://s3.amazonaws.com/codiqa-cdn/codiqa.ext.css" rel="stylesheet">
+	  <link href="https://s3.amazonaws.com/codiqa-cdn/mobile/1.4.2/jquery.mobile-1.4.2.css" rel="stylesheet">
+
+	  <link rel="stylesheet" type="text/css" href="style.css">
+
+	  <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+	  <script type="text/javascript" src="basic.js"></script>
+	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	  <script src="https://s3.amazonaws.com/codiqa-cdn/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
+	  <script src="https://s3.amazonaws.com/codiqa-cdn/codiqa.ext.js"></script>
+
 	  <script src="script.js"></script>
 
-
-  <meta charset="utf-8">
-  <title></title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <link href="https://s3.amazonaws.com/codiqa-cdn/codiqa.ext.css" rel="stylesheet">
-  <link href="https://s3.amazonaws.com/codiqa-cdn/mobile/1.4.2/jquery.mobile-1.4.2.css" rel="stylesheet">
-
-  <link rel="stylesheet" type="text/css" href="style.css">
-  <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
-<script type="text/javascript" src="basic.js"></script>
-	
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-  <script src="https://s3.amazonaws.com/codiqa-cdn/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
-  <script src="https://s3.amazonaws.com/codiqa-cdn/codiqa.ext.js"></script>
-
-<script type="text/javascript" charset="utf-8" src="phonegap-1.0.0.js">
-</script>
- <script type="text/javascript" charset="utf-8">
- // Espere a que PhoneGap inicie // 
- document.addEventListener("deviceready", onDeviceReady, false);
- // PhoneGap esta listo //
- function onDeviceReady() {
- // vacio 
- } 
- // alerta cerrada
- function alertDismissed() {
- // hacer algo aquí 
- } 
- // Muestra un cuadro de dialogo personalizado 
- //
- function showAlert(){ 
- navigator.notification.alert(
- 'Eres el ganador!',  // mensaje (message)
- alertDismissed, // función 'callback' (alertCallback)
- 'Game Over', // titulo (title) 
- 'Cerrar' // nombre del botón (buttonName) 
- ); 
- } 
- function showConfirm()
- { 
- navigator.notification.confirm(
- 'Eres el ganador!',  // mensaje (message) 
- onConfirm, // función 'callback' a llamar con el índice del botón pulsado (confirmCallback) 
- 'Game Over', // titulo (title) 
- 'Restart,Exit' // botones (buttonLabels)
- ); 
- }
- 
- 
-</script> 
- 
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+  
 </head>
 <body onload="inicio()">
 <div data-role="page" data-theme="a" id="page7">
@@ -135,7 +95,7 @@
         </a>
     </div>
 </div>
-<div data-role="page" data-control-title="graficas" id="page6">
+<div data-role="page" data-control-title="graficas" id="page6" >
     <div data-theme="b" data-role="header">
         <h1 class="ui-title">
             App
@@ -146,7 +106,30 @@
     </div>
     <div role="main" class="ui-content">
     </div>
-</div>
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+          var calorias = localStorage.getItem('calq');
+          calor= parseInt(calorias);
+        var data = google.visualization.arrayToDataTable([
+          ['Fecha', 'Calorias Perdidas'],
+          ['Hoy',  calor  ],
+          
+        ]);
+
+        var options = {
+          title: 'Calorias Quemadas:',
+          hAxis: {title: 'Calorias Qemadas al Caminar',  titleTextStyle: {color: '#333'}},
+          vAxis: {minValue: 0}
+        };
+
+        var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
+    </script>
+    <div id="chart_div" style="width: 400px; height: 400px; margin-left: 300px;" ></div>
+ </div>
 <div data-role="page" data-control-title="Trotar" id="page4">
     <div data-theme="b" data-role="header">
         <h1 class="ui-title">
@@ -160,7 +143,7 @@
        
 	   
 	   <!-- google maps -->
-		<div id="map_canvas" style="margin:0 auto;width:auto; height:236px"></div>
+		<div id="map_canvas" style="margin:0 auto;width:236px; height:236px"></div>
         <div id="sport">
           <!--<div>-->
             <h4 class=" text-align-center">
@@ -185,14 +168,14 @@
 
           <div id="salida">
             
-              <button type="button" data-theme="a" data-mini="true" href="#page1" onclick="calcRoute(); desaparece();">Termina</button>
+              <button type="button" data-theme="a" data-mini="true" href="#page1" onclick="calcRoute(); desaparece(); computeTotalDuration();">Termina</button>
             
           </div>
 
         </div>
 
 
-        <div id="directionsPanel" style="margin:0 auto;width:auto;height 200px">
+        <div id="directionsPanel" style="margin:0;width:auto;height:auto">
 
 		
 
@@ -205,7 +188,7 @@
             <span id="total1"></span>
           </p>
           <p>
-            <strong>Calorias Quemadas:</strong>
+            <strong>Calorias Quemadas: </strong>
             <span id="cal1"></span>
           </p>
 

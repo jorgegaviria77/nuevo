@@ -112,8 +112,9 @@
 
   
 	function computeTotalDuration(result) {
-		var p = document.getElementById('peso').value; // Peso
-		var total = 0;
+		//var p = document.getElementById('peso').value; // Peso
+		var p = localStorage.getItem('keypes');
+        var total = 0;
 		var cal = 0;
 		var myroute = result.routes[0];
 		for (i = 0; i < myroute.legs.length; i++) {
@@ -122,10 +123,11 @@
 		
 		total = total / 60;
 		document.getElementById("total1").innerHTML = total + " min";
-		/*Jorge y Jesus: para caminata moderada: 0.029 x (tu peso) x 2.2 x total minutos caminados= calorias quemadas.*/
+		/*calorias caminata moderada*/
 		cal = 0.029*(p*2.2)*total;
 		document.getElementById("cal1").innerHTML = cal + " Aproximadamente";
-	}
+        localStorage.setItem('calq',cal);
+    }
   
 	
   
